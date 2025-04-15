@@ -1,0 +1,46 @@
+name: GitHub Classroom Workflow
+
+on: [push]
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Make sure pytest is listed in your requirements.txt
+          pip install -r requirements.txt
+
+      # This step runs pytest. If any test fails, pytest exits non-zero,
+      # and this *entire step* will be marked as failed by GitHub Actions.
+      - name: Run Pytest Tests
+        id: pytest_step # Give it an ID
+        run: pytest # Just run pytest directly
+
+      # Use the autograding action to report points based *only* on the
+      # success or failure of the previous step.
+      - name: Autograding Reporter
+        uses: education/autograding@v1
+        with:
+          # Define a single "test" that checks the outcome of the pytest_step
+          tests: |
+            [
+              {
+                "name": "Overall Test Suite",
+                "setup": "",
+                "run": "pytest_step", # Crucially, reference the ID of the step above
+                "input": "",
+                "output": "",
+                "comparison": "exact", # This comparison isn't really used here
+                "points": 1 # Assign 1 point ONLY if 'pytest_step' succeeded (exited 0)
+              }
+            ]
