@@ -17,7 +17,7 @@ def circle_class():
 
 def test_circle(circle_class: Type[Shape]):
     circle = circle_class(5)
-    assert circle.radius == 5
+    assert circle._radius == 5
     assert circle.get_area() == pytest.approx(math.pi * 5**2, rel=1e-9)
     assert circle.get_perimeter() == pytest.approx(2 * math.pi * 5, rel=1e-9)
     assert isinstance(circle, Shape)
@@ -25,7 +25,7 @@ def test_circle(circle_class: Type[Shape]):
     assert circle.diameter == 10
 
     circle.diameter = 4
-    assert circle.radius == 2
+    assert circle._radius == 2
     assert circle.diameter == 4
 
     with pytest.raises(ValueError):

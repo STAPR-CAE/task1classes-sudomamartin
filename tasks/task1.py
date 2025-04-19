@@ -31,12 +31,16 @@ def main():
 
     # rect = Rectangle(5, 10)
     # print(rect)  # Should display rectangle dimensions
+    # print(f"Width: {rect.width}")  # Should display width
+    # print(f"Height: {rect.height}")  # Should display height
     # print(f"Area: {rect.get_area()}")
     # print(f"Perimeter: {rect.get_perimeter()}")
 
     # square = Square(7)
     # print(square)  # Should display square info
+    # print(f"Width: {square.width}")  # Should display width
+    # print(f"Height: {square.height}")  # Should display height
     # print(f"Area: {square.get_area()}")
     # print(f"Perimeter: {square.get_perimeter()}")
 
-    print("Completed Tasks/task1.py")
+    print("Completed tasks/task1.py")

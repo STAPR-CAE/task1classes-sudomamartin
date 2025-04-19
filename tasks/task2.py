@@ -1,4 +1,5 @@
 from tasks.shape import Shape
+import math
 
 """
 ## Exercise 2: Properties
@@ -13,9 +14,9 @@ property setter can be implemented using the `@property_name.setter` decorator. 
 # Implement the Circle class here
 class Circle(Shape):
     pass
-    # implement __init__ method with radius parameter
-    # implement get_area method
-    # implement get_perimeter method
+    # implement __init__ method with protected _radius parameter
+    # implement get_area method, use math.pi for pi
+    # implement get_perimeter method, use math.pi for pi
     # implement __str__ method
     # implement diameter property
     # implement diameter property setter with validation
@@ -31,6 +32,7 @@ def main():
 
     # circle = Circle(5)
     # print(circle)  # Should display circle info
+    # print(f"Radius: {circle._radius}")
     # print(f"Area: {circle.get_area():.2f}")
     # print(f"Circumference: {circle.get_perimeter():.2f}")
     # print(f"Diameter: {circle.diameter}")
@@ -48,4 +50,4 @@ def main():
     # except ValueError as e:
     #     print(f"Correctly caught error: {e}")
 
-    print("Completed Tasks/task2.py")
+    print("Completed tasks/task2.py")
